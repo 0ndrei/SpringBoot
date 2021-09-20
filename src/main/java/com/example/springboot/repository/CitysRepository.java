@@ -37,5 +37,13 @@ public class CitysRepository {
             return "Country not found";
         }
     }
+    public String delete(Integer id) {
+        try {
+            this.city.remove(this.city.get(id));
+            return "Country deleted";
+        } catch (Exception exception) {
+            return "Country not found";
+        }
+    }
 
 }

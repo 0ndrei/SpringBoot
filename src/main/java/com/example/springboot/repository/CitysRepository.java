@@ -16,4 +16,12 @@ public class CitysRepository {
         this.city.add(countryName);
         return "City created";
     }
+
+    public String read(Integer id){
+        try {
+            return id + ":" + this.city.get(id);
+        } catch (Exception exception){
+            return "Not found";
+        }
+    }
 }

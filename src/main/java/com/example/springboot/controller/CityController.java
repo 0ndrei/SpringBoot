@@ -1,31 +1,31 @@
 package com.example.springboot.controller;
 
-import com.example.springboot.repository.CitysRepository;
+import com.example.springboot.repository.CitiesRepository;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CityController {
-    CitysRepository citysRepository = new CitysRepository();
+    CitiesRepository citiesRepository = new CitiesRepository();
 
-    @PostMapping("countries")
+    @PostMapping("City")
     public String create(@RequestParam String cityName){
-        return citysRepository.create(cityName);
+        return citiesRepository.create(cityName);
     }
 
-    @GetMapping("countries/{id}")
+    @GetMapping("City/{id}")
     public String read(@PathVariable Integer id){
-        return citysRepository.read(id);
+        return citiesRepository.read(id);
     }
 
-    @GetMapping("countries")
-    public String readAll(){ return citysRepository.readAll();
+    @GetMapping("City")
+    public String readAll(){ return citiesRepository.readAll();
     }
 
-    @PutMapping("countries/{id}")
+    @PutMapping("City/{id}")
     public String update(@PathVariable Integer id, @RequestParam String countryName){
-        return citysRepository.update(id, countryName);
+        return citiesRepository.update(id, countryName);
     }
 
-    @DeleteMapping("countries/{id}")
-    public String delete(@PathVariable Integer id){ return citysRepository.delete(id); }
+    @DeleteMapping("City/{id}")
+    public String delete(@PathVariable Integer id){ return citiesRepository.delete(id); }
 }

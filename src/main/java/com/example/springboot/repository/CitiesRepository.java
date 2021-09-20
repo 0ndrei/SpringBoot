@@ -2,10 +2,10 @@ package com.example.springboot.repository;
 
 import java.util.ArrayList;
 
-public class CitysRepository {
+public class CitiesRepository {
     ArrayList<String> city = new ArrayList<>();
 
-    public CitysRepository(){
+    public CitiesRepository(){
         this.city.add("Balti");
         this.city.add("Chisinau");
         this.city.add("Ocnita");
@@ -32,17 +32,17 @@ public class CitysRepository {
     public String update(Integer id, String countryName){
         try {
             this.city.set(id, countryName);
-            return "Country updated";
+            return "City updated";
         } catch (Exception exception){
-            return "Country not found";
+            return "City not found";
         }
     }
     public String delete(Integer id) {
         try {
             this.city.remove(this.city.get(id));
-            return "Country deleted";
+            return "City deleted";
         } catch (Exception exception) {
-            return "Country not found";
+            return "City not found";
         }
     }
 

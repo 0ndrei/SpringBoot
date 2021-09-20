@@ -16,4 +16,13 @@ public class CityController {
     public String read(@PathVariable Integer id){
         return citysRepository.read(id);
     }
+
+    @GetMapping("countries")
+    public String readAll(){ return citysRepository.readAll();
+    }
+
+    @PutMapping("countries/{id}")
+    public String update(@PathVariable Integer id, @RequestParam String countryName){
+        return citysRepository.update(id, countryName);
+    }
 }

@@ -24,4 +24,18 @@ public class CitysRepository {
             return "Not found";
         }
     }
+
+    public String readAll(){
+        return this.city.toString();
+    }
+
+    public String update(Integer id, String countryName){
+        try {
+            this.city.set(id, countryName);
+            return "Country updated";
+        } catch (Exception exception){
+            return "Country not found";
+        }
+    }
+
 }

@@ -22,8 +22,8 @@ public class CityController {
     }
 
     @PutMapping("City/{id}")
-    public String update(@PathVariable Integer id, @RequestParam String countryName){
-        return citiesRepository.update(id, countryName);
+    public String update(@PathVariable Integer id, @RequestParam String cityName){
+        return citiesRepository.update(id, cityName);
     }
 
     @DeleteMapping("City/{id}")

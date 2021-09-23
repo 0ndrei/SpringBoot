@@ -1,9 +1,12 @@
 package com.example.springboot.repository;
 
+import com.example.springboot.model.Cities;
+
 import java.util.ArrayList;
 
 public class CitiesRepository {
     ArrayList<String> city = new ArrayList<>();
+    ArrayList<Cities> cityModel = new ArrayList<Cities>();
 
     public CitiesRepository(){
         this.city.add("Balti");
@@ -12,8 +15,13 @@ public class CitiesRepository {
         this.city.add("Falesti");
     }
 
-    public String create(String countryName){
-        this.city.add(countryName);
+    public String create(String cityName){
+        Cities cities = new Cities(cityName);
+        this.cityModel.add(cities);
+        System.out.println(this.cityModel);
+
+        this.city.add(cityName);
+        System.out.println(cityModel);
         return "City created";
     }
 
@@ -29,9 +37,9 @@ public class CitiesRepository {
         return this.city.toString();
     }
 
-    public String update(Integer id, String countryName){
+    public String update(Integer id, String cityName){
         try {
-            this.city.set(id, countryName);
+            this.city.set(id, cityName);
             return "City updated";
         } catch (Exception exception){
             return "City not found";

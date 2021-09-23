@@ -5,53 +5,51 @@ import com.example.springboot.model.Cities;
 import java.util.ArrayList;
 
 public class CitiesRepository {
-    ArrayList<String> city = new ArrayList<>();
-    ArrayList<Cities> cityModel = new ArrayList<Cities>();
+    ArrayList<Cities> cities = new ArrayList<>();
 
     public CitiesRepository(){
-        this.city.add("Balti");
-        this.city.add("Chisinau");
-        this.city.add("Ocnita");
-        this.city.add("Falesti");
     }
 
     public String create(String cityName){
         Cities cities = new Cities(cityName);
-        this.cityModel.add(cities);
-        System.out.println(this.cityModel);
-
-        this.city.add(cityName);
-        System.out.println(cityModel);
+        this.cities.add(cities);
         return "City created";
     }
 
     public String read(Integer id){
         try {
-            return id + ":" + this.city.get(id);
+            Cities cities = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
+            return cities.toString();
         } catch (Exception exception){
             return "Not found";
         }
     }
 
     public String readAll(){
-        return this.city.toString();
+        return this.cities.toString();
     }
 
     public String update(Integer id, String cityName){
         try {
-            this.city.set(id, cityName);
+            Cities country = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
+            country.setName(cityName);
             return "City updated";
         } catch (Exception exception){
             return "City not found";
         }
     }
-    public String delete(Integer id) {
+
+    public String delete(Integer id){
         try {
-            this.city.remove(this.city.get(id));
+            Cities cities = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
+            if(cities == null){
+                return "City not found";            }
+            this.cities.remove(cities);
             return "City deleted";
-        } catch (Exception exception) {
+        } catch (Exception exception){
             return "City not found";
         }
+
     }
 
 }

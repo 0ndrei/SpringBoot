@@ -13,7 +13,7 @@ public class CitiesRepository {
     public String create(String cityName){
         Cities cities = new Cities(cityName);
         this.cities.add(cities);
-        return "City create";
+        return "City created";
     }
 
     public String read(Integer id){

@@ -22,7 +22,7 @@ public class CitiesRepository {
 
         this.city.add(cityName);
         System.out.println(cityModel);
-        return "City created";1
+        return "City created";
     }
 
     public String read(Integer id){

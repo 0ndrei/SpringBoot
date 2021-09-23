@@ -7,25 +7,28 @@ import org.springframework.web.bind.annotation.*;
 public class CityController {
     CitiesRepository citiesRepository = new CitiesRepository();
 
-    @PostMapping("City")
-    public String create(@RequestParam String cityName){
-        return citiesRepository.create(cityName);
+    @PostMapping("cities")
+    public String create(@RequestParam String cityName, @RequestParam Integer countryId){
+        return citiesRepository.create(cityName, countryId);
     }
 
-    @GetMapping("City/{id}")
+    @GetMapping("cities/{id}")
     public String read(@PathVariable Integer id){
         return citiesRepository.read(id);
     }
 
-    @GetMapping("City")
-    public String readAll(){ return citiesRepository.readAll();
+    @GetMapping("cities")
+    public String readAll(){
+        return citiesRepository.readAll();
     }
 
-    @PutMapping("City/{id}")
+    @PutMapping("cities/{id}")
     public String update(@PathVariable Integer id, @RequestParam String cityName){
         return citiesRepository.update(id, cityName);
     }
 
-    @DeleteMapping("City/{id}")
-    public String delete(@PathVariable Integer id){ return citiesRepository.delete(id); }
+    @DeleteMapping("cities/{id}")
+    public String delete(@PathVariable Integer id){
+        return citiesRepository.delete(id);
+    }
 }

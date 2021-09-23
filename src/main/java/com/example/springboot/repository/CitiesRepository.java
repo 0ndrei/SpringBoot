@@ -1,25 +1,24 @@
 package com.example.springboot.repository;
 
-import com.example.springboot.model.Cities;
-
+import com.example.springboot.model.City;
 import java.util.ArrayList;
 
 public class CitiesRepository {
-    ArrayList<Cities> cities = new ArrayList<>();
 
+    ArrayList<City> cities = new ArrayList<>();
     public CitiesRepository(){
     }
 
-    public String create(String cityName){
-        Cities cities = new Cities(cityName);
-        this.cities.add(cities);
+    public String create(String CityName, Integer countryId){
+        City city = new City(CityName, countryId);
+        this.cities.add(city);
         return "City created";
     }
 
     public String read(Integer id){
         try {
-            Cities cities = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
-            return cities.toString();
+            City City = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
+            return City.toString();
         } catch (Exception exception){
             return "Not found";
         }
@@ -29,10 +28,10 @@ public class CitiesRepository {
         return this.cities.toString();
     }
 
-    public String update(Integer id, String cityName){
+    public String update(Integer id, String CityName){
         try {
-            Cities country = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
-            country.setName(cityName);
+            City City = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
+            City.setName(CityName);
             return "City updated";
         } catch (Exception exception){
             return "City not found";
@@ -41,15 +40,14 @@ public class CitiesRepository {
 
     public String delete(Integer id){
         try {
-            Cities cities = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
-            if(cities == null){
+            City City = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
+            if(City == null){
                 return "City not found";            }
-            this.cities.remove(cities);
+            this.cities.remove(City);
             return "City deleted";
         } catch (Exception exception){
             return "City not found";
         }
 
     }
-
 }

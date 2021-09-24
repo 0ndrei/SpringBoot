@@ -1,10 +1,13 @@
 package com.example.springboot.model;
 
-public class City {
+import java.net.PortUnreachableException;
+
+public class City extends Country{
     private Integer id = null;
-    private String name = null;
+    private String nameCity= null;
 
     private Integer countryId = null;
+    private String countryName = null;
     public static Integer autoincrementId = 0;
 
     City(){
@@ -14,8 +17,9 @@ public class City {
     public City(String name, Integer countryId){
         City.autoincrementId++;
         this.id = City.autoincrementId;
-        this.name = name;
+        this.nameCity = name;
         this.countryId = countryId;
+
     }
 
     public Integer getId() {
@@ -27,11 +31,11 @@ public class City {
     }
 
     public String getName() {
-        return name;
+        return nameCity;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.nameCity = name;
     }
 
     public Integer getCountryId() {
@@ -43,19 +47,22 @@ public class City {
     }
 
     //todo
-
-    public String getCountyName(){
-        //todo to implement this method
-        return "Noname";
+    public String getCountryName(String countryName) {
+        return countryName;
     }
+
+    public void setCountryName() {
+        this.countryName = countryName;
+    }
+    
 
     @Override
     public String toString() {
         return "City{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + nameCity + '\'' +
                 ", countryId=" + countryId +
-                ", countryName=" + this.getCountyName() +
+                ", countryName=" + countryName +
                 '}';
     }
 }

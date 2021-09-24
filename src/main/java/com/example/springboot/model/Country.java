@@ -2,7 +2,7 @@ package com.example.springboot.model;
 
 public class Country {
     private Integer id = null;
-    private String name = null;
+    String nameCountry = null;
     public static Integer autoincrementId = 0;
 
     Country(){
@@ -12,7 +12,7 @@ public class Country {
     public Country(String name){
         Country.autoincrementId++;
         this.id = Country.autoincrementId;
-        this.name = name;
+        this.nameCountry = name;
     }
 
     public Integer getId() {
@@ -24,18 +24,18 @@ public class Country {
     }
 
     public String getName() {
-        return name;
+        return nameCountry;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.nameCountry = name;
     }
 
     @Override
     public String toString() {
         return "Country{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + nameCountry + '\'' +
                 '}';
     }
 }

@@ -1,6 +1,6 @@
 package com.example.springboot.model;
 
-import java.net.PortUnreachableException;
+import com.example.springboot.controller.CountryController;
 
 public class City extends Country{
     private Integer id = null;
@@ -47,14 +47,14 @@ public class City extends Country{
     }
 
     //todo
-    public String getCountryName(String countryName) {
+    public String getCountryName(){
+        //todo to implement this method
         return countryName;
     }
 
-    public void setCountryName() {
+    public void setCountryName(String countryName) {
         this.countryName = countryName;
     }
-    
 
     @Override
     public String toString() {

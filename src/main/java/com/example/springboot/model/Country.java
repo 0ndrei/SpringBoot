@@ -5,7 +5,7 @@ public class Country {
     String nameCountry = null;
     public static Integer autoincrementId = 0;
 
-    Country(){
+    Country() {
 
     }
 

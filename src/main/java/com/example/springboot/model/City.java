@@ -1,14 +1,14 @@
 package com.example.springboot.model;
 
-import com.example.springboot.controller.CountryController;
+import com.example.springboot.repository.CountriesRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
-public class City extends Country{
+public class City {
     private Integer id = null;
-    private String nameCity= null;
-
+    private String name = null;
     private Integer countryId = null;
-    private String countryName = null;
     public static Integer autoincrementId = 0;
+    private CountriesRepository countriesRepository;
 
     City(){
 
@@ -17,9 +17,9 @@ public class City extends Country{
     public City(String name, Integer countryId){
         City.autoincrementId++;
         this.id = City.autoincrementId;
-        this.nameCity = name;
+        this.name = name;
         this.countryId = countryId;
-
+        this.countriesRepository = CountriesRepository.getInstance();
     }
 
     public Integer getId() {
@@ -31,11 +31,11 @@ public class City extends Country{
     }
 
     public String getName() {
-        return nameCity;
+        return name;
     }
 
     public void setName(String name) {
-        this.nameCity = name;
+        this.name = name;
     }
 
     public Integer getCountryId() {
@@ -47,22 +47,19 @@ public class City extends Country{
     }
 
     //todo
-    public String getCountryName(){
-        //todo to implement this method
-        return countryName;
-    }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
+    public String getCountyName(){
+        //todo to implement thi
+        return this.countriesRepository.findNameById(countryId);
     }
 
     @Override
     public String toString() {
         return "City{" +
                 "id=" + id +
-                ", name='" + nameCity + '\'' +
+                ", name='" + name + '\'' +
                 ", countryId=" + countryId +
-                ", countryName=" + countryName +
+                ", countryName=" + this.getCountyName() +
                 '}';
     }
 }

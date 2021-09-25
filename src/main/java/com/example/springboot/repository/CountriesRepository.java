@@ -5,10 +5,19 @@ import com.example.springboot.model.Country;
 import java.util.ArrayList;
 
 public class CountriesRepository {
+    private static CountriesRepository instance;
 
     ArrayList<Country> countries = new ArrayList<>();
 
-    public CountriesRepository() {
+    private CountriesRepository() {
+    }
+
+    public static CountriesRepository getInstance() {
+        if (instance == null) {
+            instance = new CountriesRepository();
+        }
+
+        return instance;
     }
 
     public String create(String countryName) {
@@ -21,6 +30,15 @@ public class CountriesRepository {
         try {
             Country country = this.countries.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
             return country.toString();
+        } catch (Exception exception) {
+            return "Not found";
+        }
+    }
+
+    public String findNameById(Integer id) {
+        try {
+            Country country = this.countries.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
+            return country.getName();
         } catch (Exception exception) {
             return "Not found";
         }

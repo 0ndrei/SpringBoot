@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CountryController {
-    CountriesRepository countriesRepository = new CountriesRepository();
+    CountriesRepository countriesRepository = CountriesRepository.getInstance();
 
     @PostMapping("countries")
     public String create(@RequestParam String countryName){
